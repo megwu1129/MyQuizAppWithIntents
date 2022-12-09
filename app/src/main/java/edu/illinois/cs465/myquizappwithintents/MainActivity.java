@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int PEEK_ACTIVITY_REQUEST = 1;
@@ -57,10 +59,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              activity that can handle the request described in the Intent.
             */
 
-            Uri webpage = Uri.parse("https://en.wikipedia.org/wiki/Springfield,_Illinois");
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.setData(webpage);
+//            Uri webpage = Uri.parse("https://en.wikipedia.org/wiki/Springfield,_Illinois");
+//            Intent intent = new Intent();
+//            intent.setAction(Intent.ACTION_VIEW);
+//            intent.setData(webpage);
+//            Intent chooser = Intent.createChooser(intent, "OPEN WITH");
+//            startActivity(chooser);
+
+            // show Springfield, IL on a map
+            String uri = String.format(Locale.ENGLISH, "geo:%f,%f", 39.799999, -89.650002);
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
             Intent chooser = Intent.createChooser(intent, "OPEN WITH");
             startActivity(chooser);
 
